@@ -1,0 +1,44 @@
+<form class="Example" style="width: 500px;" #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
+    <mat-form-field style="width: 80%; margin-left: 5%;">
+      <input matInput placeholder="Name" [(ngModel)]="name" #ctrl="ngModel" name="name"
+      (ngModelChange)="checkName()">
+      <mat-hint><div [textContent]="nameHint"></div></mat-hint>
+    </mat-form-field>
+  <br>
+    <mat-form-field style="width: 80%; margin-left: 5%;">
+      <input matInput type="number" placeholder="Age" [(ngModel)]="age" #ctrl1="ngModel" name="age"
+      (ngModelChange)="checkAge()">
+      <mat-hint><div [textContent]="ageHint"></div></mat-hint>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 80%; margin-left: 5%;">
+        <input matInput placeholder="Email" [(ngModel)]="email" #ctrl="ngModel" name="email"
+        (ngModelChange)="checkEmail()">
+        <mat-hint><div [textContent]="emailHint"></div></mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 80%; margin-left: 5%;">
+        <input matInput placeholder="Address" [(ngModel)]="address" #ctrl="ngModel" name="address"
+        (ngModelChange)="checkAddress()">
+        <mat-hint><div [textContent]="addressHint"></div></mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 80%; margin-left: 5%;">
+        <input matInput placeholder="Phone" [(ngModel)]="phone" #ctrl="ngModel" name="phone"
+        (ngModelChange)="checkPhone()">
+        <mat-hint><div [textContent]="phoneHint"></div></mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 80%; margin-left: 5%;">
+        <input matInput placeholder="Company" [(ngModel)]="company" #ctrl="ngModel" name="company"
+        (ngModelChange)="checkCompany()">
+        <mat-hint><div [textContent]="companyHint"></div></mat-hint>
+      </mat-form-field>
+      <br>
+      <div style="margin-left: 70%;">
+        <!-- <button mat-button color="primary">Cancel</button> -->
+        <button mat-raised-button color="primary" [mat-dialog-close]="[name, age, email, address, phone, company, checkAll()]"
+        (click)="onSubmit()" [disabled]="!checkAll()">
+            {{button}}</button>
+    </div>
+  </form>

@@ -1,0 +1,73 @@
+<h3 style="margin-left: 40%;">Angular List App</h3>
+<mat-form-field [ngClass]="{Table: true}">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+      
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [ngClass]="{Table: true}">
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="No">
+          <th mat-header-cell *matHeaderCellDef > No </th>
+          <td mat-cell *matCellDef="let element; let i = index"> 
+            <div *ngIf="!hover[i]; else elseBlock">
+                {{i+1}}
+            </div>
+            <ng-template #elseBlock>
+                <mat-icon style="cursor: pointer;"
+                (click)="openDialog(i, 'edit', 'update')">edit</mat-icon>
+            </ng-template>
+        </td>
+        </ng-container>
+        
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name" >
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Age">
+          <th mat-header-cell *matHeaderCellDef> Age </th>
+          <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Company">
+            <th mat-header-cell *matHeaderCellDef> Company </th>
+            <td mat-cell *matCellDef="let element"> {{element.Company}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Delete">
+                <th mat-header-cell *matHeaderCellDef [ngClass]="{None: true}"> </th>
+                <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{None: !hover[i]}">
+                     <mat-icon [ngClass]="{Pointer: true}" (click)="openDialog1(i)">delete_outline</mat-icon>
+                     </td>
+            </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index"
+        class="remove-background"
+        raisedElevation="16"
+        [class.mat-elevation-z16]="hover[i]" (mouseover)="onHover(i)" (mouseleave)="OffHover(i)"
+        ></tr>
+      </table>
+<button mat-raised-button (click)="openDialog(i, 'add', 'Add')" color="warn"
+style="margin: 5px 0px 0px 82%">
+<mat-icon>add</mat-icon> Add</button>
+      

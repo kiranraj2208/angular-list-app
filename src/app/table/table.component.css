@@ -1,0 +1,21 @@
+.Table {
+    margin-left: 8%;
+    width: 80%;
+}
+
+[mat-row].remove-background {
+    background: none ;
+  }
+
+.Pointer {
+    cursor: pointer;
+}
+
+.None {
+    display: none;
+    width: 100%;
+}
+
+.Display {
+    display: inherit;
+}
